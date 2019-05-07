@@ -1,0 +1,91 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "clusterName": {
+            "required": true,
+            "type": "string"
+        },
+        "databaseName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The list Kusto database principals operation request.",
+            "properties": {
+                "value": {
+                    "description": "The list of Kusto database principals.",
+                    "items": {
+                        "description": "A class representing database principal entity.",
+                        "properties": {
+                            "appId": {
+                                "description": "Application id - relevant only for application principal type.",
+                                "type": "string"
+                            },
+                            "email": {
+                                "description": "Database principal email if exists.",
+                                "type": "string"
+                            },
+                            "fqn": {
+                                "description": "Database principal fully qualified name.",
+                                "type": "string"
+                            },
+                            "name": {
+                                "description": "Database principal name.",
+                                "type": "string"
+                            },
+                            "role": {
+                                "description": "Database principal role.",
+                                "enum": [
+                                    "Admin",
+                                    "Ingestor",
+                                    "Monitor",
+                                    "User",
+                                    "UnrestrictedViewers",
+                                    "Viewer"
+                                ],
+                                "type": "string",
+                                "x-ms-enum": {
+                                    "modelAsString": true,
+                                    "name": "DatabasePrincipalRole"
+                                }
+                            },
+                            "type": {
+                                "description": "Database principal type.",
+                                "enum": [
+                                    "App",
+                                    "Group",
+                                    "User"
+                                ],
+                                "type": "string",
+                                "x-ms-enum": {
+                                    "modelAsString": true,
+                                    "name": "DatabasePrincipalType"
+                                }
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "role",
+                            "type"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

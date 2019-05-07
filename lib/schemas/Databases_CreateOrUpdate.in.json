@@ -1,0 +1,106 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "clusterName": {
+            "required": true,
+            "type": "string"
+        },
+        "databaseName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "id": {
+                                    "description": "Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "The name of the resource",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "x-ms-azure-resource": true,
+                            "type": "object"
+                        }
+                    ],
+                    "description": "The resource model definition for a ARM proxy resource. It will have everything other than required location and tags"
+                }
+            ],
+            "description": "Class representing a Kusto database.",
+            "properties": {
+                "location": {
+                    "description": "Resource location.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "The database properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "hotCachePeriod": {
+                            "description": "The time the data that should be kept in cache for fast queries in TimeSpan.",
+                            "format": "duration",
+                            "type": "string"
+                        },
+                        "provisioningState": {
+                            "description": "The provisioned state of the resource.",
+                            "enum": [
+                                "Running",
+                                "Creating",
+                                "Deleting",
+                                "Succeeded",
+                                "Failed"
+                            ],
+                            "readOnly": true,
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "ProvisioningState"
+                            }
+                        },
+                        "softDeletePeriod": {
+                            "description": "The time the data should be kept before it stops being accessible to queries in TimeSpan.",
+                            "format": "duration",
+                            "type": "string"
+                        },
+                        "statistics": {
+                            "description": "The statistics of the database.",
+                            "properties": {
+                                "size": {
+                                    "description": "The database size - the total size of compressed data and index in bytes.",
+                                    "type": "number"
+                                }
+                            },
+                            "readOnly": true,
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

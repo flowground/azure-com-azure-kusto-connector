@@ -1,0 +1,192 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "clusterName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "id": {
+                                    "description": "Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "The name of the resource",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "x-ms-azure-resource": true,
+                            "type": "object"
+                        }
+                    ],
+                    "description": "The resource model definition for a ARM tracked top level resource",
+                    "properties": {
+                        "location": {
+                            "description": "The geo-location where the resource lives",
+                            "type": "string",
+                            "x-ms-mutability": [
+                                "read",
+                                "create"
+                            ]
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags.",
+                            "type": "object",
+                            "x-ms-mutability": [
+                                "read",
+                                "create",
+                                "update"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "location"
+                    ],
+                    "type": "object"
+                }
+            ],
+            "description": "Class representing a Kusto cluster.",
+            "properties": {
+                "properties": {
+                    "description": "The cluster properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "dataIngestionUri": {
+                            "description": "The cluster data ingestion URI.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "provisioningState": {
+                            "description": "The provisioned state of the resource.",
+                            "enum": [
+                                "Running",
+                                "Creating",
+                                "Deleting",
+                                "Succeeded",
+                                "Failed"
+                            ],
+                            "readOnly": true,
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "ProvisioningState"
+                            }
+                        },
+                        "state": {
+                            "description": "The state of the resource.",
+                            "enum": [
+                                "Creating",
+                                "Unavailable",
+                                "Running",
+                                "Deleting",
+                                "Deleted",
+                                "Stopping",
+                                "Stopped",
+                                "Starting",
+                                "Updating"
+                            ],
+                            "readOnly": true,
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "State"
+                            }
+                        },
+                        "trustedExternalTenants": {
+                            "description": "The cluster's external tenants.",
+                            "items": {
+                                "description": "Represents a tenant ID that is trusted by the cluster.",
+                                "properties": {
+                                    "value": {
+                                        "description": "GUID representing an external tenant.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "uri": {
+                            "description": "The cluster URI.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    }
+                },
+                "sku": {
+                    "description": "The SKU of the cluster.",
+                    "properties": {
+                        "capacity": {
+                            "description": "SKU capacity.",
+                            "type": "integer"
+                        },
+                        "name": {
+                            "description": "SKU name.",
+                            "enum": [
+                                "D13_v2",
+                                "D14_v2",
+                                "L8",
+                                "L16",
+                                "D11_v2",
+                                "D12_v2",
+                                "L4"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "AzureSkuName"
+                            }
+                        },
+                        "tier": {
+                            "description": "SKU tier.",
+                            "enum": [
+                                "Standard"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "AzureSkuTier"
+                            }
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "tier"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "sku"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

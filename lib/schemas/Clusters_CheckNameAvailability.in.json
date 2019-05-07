@@ -1,0 +1,42 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "location": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The result returned from a cluster check name availability request.",
+            "properties": {
+                "name": {
+                    "description": "Cluster name.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of resource, Microsoft.Kusto/clusters.",
+                    "enum": [
+                        "Microsoft.Kusto/clusters"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": false,
+                        "name": "Type"
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "type"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

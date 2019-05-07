@@ -1,0 +1,46 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "clusterName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The result returned from a database check name availability request.",
+            "properties": {
+                "name": {
+                    "description": "Database name.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of resource, Microsoft.Kusto/clusters/databases.",
+                    "enum": [
+                        "Microsoft.Kusto/clusters/databases"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": false,
+                        "name": "Type"
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "type"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

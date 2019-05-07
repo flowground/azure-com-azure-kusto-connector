@@ -1,0 +1,508 @@
+{
+    "title": "KustoManagementClient",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/azure-kusto/2019-01-21/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists available operations for the Microsoft.Kusto provider.",
+            "description": "Lists available operations for the Microsoft.Kusto provider.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_List": {
+            "main": "./lib/actions/Clusters_List.js",
+            "title": "Lists all Kusto clusters within a subscription.",
+            "description": "Lists all Kusto clusters within a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_CheckNameAvailability": {
+            "main": "./lib/actions/Clusters_CheckNameAvailability.js",
+            "title": "Checks that the cluster name is valid and is not already in use.",
+            "description": "Checks that the cluster name is valid and is not already in use.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_CheckNameAvailability.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_ListSkus": {
+            "main": "./lib/actions/Clusters_ListSkus.js",
+            "title": "Lists eligible SKUs for Kusto resource provider.",
+            "description": "Lists eligible SKUs for Kusto resource provider.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_ListSkus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_ListByResourceGroup": {
+            "main": "./lib/actions/Clusters_ListByResourceGroup.js",
+            "title": "Lists all Kusto clusters within a resource group.",
+            "description": "Lists all Kusto clusters within a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_Delete": {
+            "main": "./lib/actions/Clusters_Delete.js",
+            "title": "Deletes a Kusto cluster.",
+            "description": "Deletes a Kusto cluster.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_Get": {
+            "main": "./lib/actions/Clusters_Get.js",
+            "title": "Gets a Kusto cluster.",
+            "description": "Gets a Kusto cluster.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_Update": {
+            "main": "./lib/actions/Clusters_Update.js",
+            "title": "Update a Kusto cluster.",
+            "description": "Update a Kusto cluster.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_CreateOrUpdate": {
+            "main": "./lib/actions/Clusters_CreateOrUpdate.js",
+            "title": "Create or update a Kusto cluster.",
+            "description": "Create or update a Kusto cluster.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_CheckNameAvailability": {
+            "main": "./lib/actions/Databases_CheckNameAvailability.js",
+            "title": "Checks that the database name is valid and is not already in use.",
+            "description": "Checks that the database name is valid and is not already in use.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_CheckNameAvailability.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_ListByCluster": {
+            "main": "./lib/actions/Databases_ListByCluster.js",
+            "title": "Returns the list of databases of the given Kusto cluster.",
+            "description": "Returns the list of databases of the given Kusto cluster.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_ListByCluster.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_Delete": {
+            "main": "./lib/actions/Databases_Delete.js",
+            "title": "Deletes the database with the given name.",
+            "description": "Deletes the database with the given name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_Get": {
+            "main": "./lib/actions/Databases_Get.js",
+            "title": "Returns a database.",
+            "description": "Returns a database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_Update": {
+            "main": "./lib/actions/Databases_Update.js",
+            "title": "Updates a database.",
+            "description": "Updates a database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_CreateOrUpdate": {
+            "main": "./lib/actions/Databases_CreateOrUpdate.js",
+            "title": "Creates or updates a database.",
+            "description": "Creates or updates a database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_AddPrincipals": {
+            "main": "./lib/actions/Databases_AddPrincipals.js",
+            "title": "Add Database principals permissions.",
+            "description": "Add Database principals permissions.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_AddPrincipals.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataConnections_dataConnectionValidation": {
+            "main": "./lib/actions/DataConnections_dataConnectionValidation.js",
+            "title": "Checks that the data connection parameters are valid.",
+            "description": "Checks that the data connection parameters are valid.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataConnections_dataConnectionValidation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataConnections_ListByDatabase": {
+            "main": "./lib/actions/DataConnections_ListByDatabase.js",
+            "title": "Returns the list of data connections of the given Kusto database.",
+            "description": "Returns the list of data connections of the given Kusto database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataConnections_ListByDatabase.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataConnections_Delete": {
+            "main": "./lib/actions/DataConnections_Delete.js",
+            "title": "Deletes the data connection with the given name.",
+            "description": "Deletes the data connection with the given name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataConnections_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataConnections_Get": {
+            "main": "./lib/actions/DataConnections_Get.js",
+            "title": "Returns a data connection.",
+            "description": "Returns a data connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataConnections_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataConnections_Update": {
+            "main": "./lib/actions/DataConnections_Update.js",
+            "title": "Updates a data connection.",
+            "description": "Updates a data connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataConnections_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataConnections_CreateOrUpdate": {
+            "main": "./lib/actions/DataConnections_CreateOrUpdate.js",
+            "title": "Creates or updates a data connection.",
+            "description": "Creates or updates a data connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataConnections_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_ListPrincipals": {
+            "main": "./lib/actions/Databases_ListPrincipals.js",
+            "title": "Returns a list of database principals of the given Kusto cluster and database.",
+            "description": "Returns a list of database principals of the given Kusto cluster and database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_ListPrincipals.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_RemovePrincipals": {
+            "main": "./lib/actions/Databases_RemovePrincipals.js",
+            "title": "Remove Database principals permissions.",
+            "description": "Remove Database principals permissions.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_RemovePrincipals.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_ListSkusByResource": {
+            "main": "./lib/actions/Clusters_ListSkusByResource.js",
+            "title": "Returns the SKUs available for the provided resource.",
+            "description": "Returns the SKUs available for the provided resource.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_ListSkusByResource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_Start": {
+            "main": "./lib/actions/Clusters_Start.js",
+            "title": "Starts a Kusto cluster.",
+            "description": "Starts a Kusto cluster.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_Start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_Stop": {
+            "main": "./lib/actions/Clusters_Stop.js",
+            "title": "Stops a Kusto cluster.",
+            "description": "Stops a Kusto cluster.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_Stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
